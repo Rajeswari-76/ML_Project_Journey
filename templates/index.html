@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Disease Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>Disease Prediction System</h1>
+
+<form method="POST">
+
+    <h3>Enter Symptoms (0 or 1)</h3>
+
+    <!-- Example: adjust number of inputs based on your model -->
+    <input type="text" name="symptoms" placeholder="Symptom 1">
+    <input type="text" name="symptoms" placeholder="Symptom 2">
+    <input type="text" name="symptoms" placeholder="Symptom 3">
+
+    <br><br>
+    <button type="submit">Predict</button>
+</form>
+
+{% if disease %}
+    <h2>Predicted Disease: {{ disease }}</h2>
+
+    <h3>Description:</h3>
+    <p>{{ description }}</p>
+
+    <h3>Precautions:</h3>
+    <ul>
+        {% for p in precautions %}
+            <li>{{ p }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+</body>
+</html>
