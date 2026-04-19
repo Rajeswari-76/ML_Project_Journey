@@ -6,34 +6,50 @@
 </head>
 <body>
 
-<h1>Disease Prediction System</h1>
+<div class="container">
 
-<form method="POST">
+    <h1>🩺 Disease Prediction System</h1>
+    <p class="subtitle">Enter your symptoms to predict possible disease</p>
 
-    <h3>Enter Symptoms (0 or 1)</h3>
+    <form method="POST" class="form-box">
 
-    <!-- Example: adjust number of inputs based on your model -->
-    <input type="text" name="symptoms" placeholder="Symptom 1">
-    <input type="text" name="symptoms" placeholder="Symptom 2">
-    <input type="text" name="symptoms" placeholder="Symptom 3">
+        <h3>Enter Symptoms (0 = No, 1 = Yes)</h3>
 
-    <br><br>
-    <button type="submit">Predict</button>
-</form>
+        <div class="inputs">
+            <input type="number" name="symptoms" placeholder="Symptom 1" min="0" max="1">
+            <input type="number" name="symptoms" placeholder="Symptom 2" min="0" max="1">
+            <input type="number" name="symptoms" placeholder="Symptom 3" min="0" max="1">
+        </div>
 
-{% if disease %}
-    <h2>Predicted Disease: {{ disease }}</h2>
+        <button type="submit">Predict</button>
 
-    <h3>Description:</h3>
-    <p>{{ description }}</p>
+    </form>
 
-    <h3>Precautions:</h3>
-    <ul>
-        {% for p in precautions %}
-            <li>{{ p }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
+    {% if disease %}
+    <div class="result-box">
+
+        <h2>🧾 Prediction Result</h2>
+
+        <h3>Disease: <span>{{ disease }}</span></h3>
+
+        <div class="card">
+            <h4>Description</h4>
+            <p>{{ description }}</p>
+        </div>
+
+        <div class="card">
+            <h4>Precautions</h4>
+            <ul>
+                {% for p in precautions %}
+                <li>{{ p }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+    {% endif %}
+
+</div>
 
 </body>
 </html>
